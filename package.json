@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-restapi-poc",
+  "version": "1.0.0",
+  "description": "A NodeJS REST API poc",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server.js",
+    "start-dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.17.1",
+    "jwt-simple": "^0.5.5",
+    "multer": "^1.4.2",
+    "mysql": "^2.16.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.19"
+  }
+}

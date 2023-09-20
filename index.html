@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="ctrl">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+      var app= angular.module("app" , []);
+      app.controller("ctrl" , function($scope ,login){
+          $scope.loginData= function(obj){
+              login.loginservcie(obj).then(function(res){
+                  $scope.result =res;
+              })
+          }
+
+          
+      });
+      app.service("login" , function($http){
+          this.loginservcie = function(obj){
+              return $http.post("http://localhost:8080/login" ,obj).then(
+                  function(posRes){return posRes},
+                  function(error){ return error}
+              );
+          }
+      });
+    </script>
+</head>
+<body>
+    <h1>{{result}}</h1>
+    <form ng-submit="loginData({'user':user , 'password':password})">
+           <label for=""> user</label>
+           <input type="text" ng-model="user" name="user"><br>
+           <label for=""> password</label>
+           <input type="password" name="password" ng-model="password">
+           <br>
+           <input type="submit" value="login">
+    </form>
+    
+</body>
+</html>
